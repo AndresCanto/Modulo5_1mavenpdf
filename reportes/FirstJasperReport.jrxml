@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FirstJasperReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3044d3ef-a85d-4547-8b87-7511b51a99be">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="LearningSQL"/>
+	<queryString language="SQL">
+		<![CDATA[Select Acc.Open_Branch_Id
+     ,Bra.Name           Branch_Name
+     ,Acc.Cust_Id
+     ,Cus.Address        Cust_Address
+     ,Acc.Account_Id
+     ,Acc.Product_Cd
+     ,Acc.Avail_Balance
+From   Account  Acc
+     ,Customer Cus
+     ,Branch   Bra
+Where  Acc.Cust_Id = Cus.Cust_Id
+And    Acc.Open_Branch_Id = Bra.Branch_Id
+Order By Bra.Branch_Id]]>
+	</queryString>
+	<field name="Open_Branch_Id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="OPEN_BRANCH_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Open_Branch_Id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="account"/>
+	</field>
+	<field name="Branch_Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="Branch_Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="branch"/>
+	</field>
+	<field name="Cust_Id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CUST_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cust_Id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="account"/>
+	</field>
+	<field name="Cust_Address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cust_Address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="Account_Id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ACCOUNT_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="Account_Id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="account"/>
+	</field>
+	<field name="Product_Cd" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCT_CD"/>
+		<property name="com.jaspersoft.studio.field.label" value="Product_Cd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="account"/>
+	</field>
+	<field name="Avail_Balance" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="AVAIL_BALANCE"/>
+		<property name="com.jaspersoft.studio.field.label" value="Avail_Balance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="account"/>
+	</field>
+	<variable name="Avail_Balance1" class="java.lang.Float" resetType="Group" resetGroup="Customer" calculation="Sum">
+		<variableExpression><![CDATA[$F{Avail_Balance}]]></variableExpression>
+	</variable>
+	<variable name="Avail_Balance2" class="java.lang.Float" resetType="Group" resetGroup="Branch" calculation="Sum">
+		<variableExpression><![CDATA[$F{Avail_Balance}]]></variableExpression>
+	</variable>
+	<variable name="Avail_Balance3" class="java.lang.Float" resetType="Group" resetGroup="Customer" calculation="Sum">
+		<variableExpression><![CDATA[$F{Avail_Balance}]]></variableExpression>
+	</variable>
+	<variable name="Avail_Balance4" class="java.lang.Float" resetType="Group" resetGroup="Branch" calculation="Sum">
+		<variableExpression><![CDATA[$F{Avail_Balance}]]></variableExpression>
+	</variable>
+	<group name="Branch">
+		<groupExpression><![CDATA[$F{Open_Branch_Id}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<rectangle>
+					<reportElement x="0" y="0" width="800" height="29" backcolor="#858585" uuid="a0b4331f-9121-4945-8f3e-6ed5269ec167"/>
+				</rectangle>
+				<textField>
+					<reportElement x="0" y="1" width="100" height="29" uuid="e16513d1-4cad-43d2-a4d7-77b5b14bdf71"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Open_Branch_Id}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="100" y="0" width="100" height="30" uuid="1205fc83-1752-454e-89e2-efe90e63bb0d"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Branch_Name}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="30">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<rectangle>
+					<reportElement x="700" y="0" width="100" height="30" backcolor="#69F5E0" uuid="d87ee52e-8c1c-4853-ab3a-4e3edc084bd0"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<textField>
+					<reportElement x="700" y="0" width="100" height="30" uuid="998976ea-10d0-4223-b28a-a1770c4f7e70"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{Avail_Balance4}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Customer">
+		<groupExpression><![CDATA[$F{Cust_Id}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<rectangle>
+					<reportElement x="200" y="-1" width="600" height="30" backcolor="#C4BFBE" uuid="22c91c49-de41-472f-8b33-22c88067f385"/>
+				</rectangle>
+				<textField>
+					<reportElement x="200" y="0" width="100" height="30" uuid="d7901747-c293-4855-977e-60b80e334022"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Cust_Id}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="300" y="0" width="200" height="30" uuid="1fd4eb81-1595-4792-a663-9b704c79dca2"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Cust_Address}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="30">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<rectangle>
+					<reportElement x="700" y="0" width="100" height="30" backcolor="#7AF5B6" uuid="90accc07-1175-4455-8c2b-a7d793a96b07"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<textField>
+					<reportElement x="700" y="0" width="100" height="30" uuid="d3b8ff1d-5937-4f7e-83c2-47716abb03d0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{Avail_Balance3}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="0" width="110" height="80" uuid="66465c8a-ba5c-4408-a07b-2ccee174251c"/>
+				<imageExpression><![CDATA["/img/bank.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="80" width="800" height="30" uuid="8247d6ad-a708-4f66-8564-84e9c1ad2049"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[BANK REPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="100" height="30" uuid="f31809f0-e22f-4f13-9233-cadbcdf7115a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[My Bank]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Prevent">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="800" height="30" backcolor="#288D8F" uuid="ead0772d-12fa-44b3-8053-8b6993e1ba37"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="30" uuid="b7280b21-6c9d-47b4-b80e-b3521afc0510">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d542f923-fb40-4bc3-b229-5f216a1e12d6"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Account_Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="30" uuid="77001acc-887b-4032-a1fc-5d0a1e4bed25">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="684c1d8d-aa5b-4a0d-b7a0-80b108de3b2d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Product_Cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="100" height="30" uuid="5bcb34bc-ff30-4f17-b611-bdc0107b9d3d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ead2e84f-3e9c-4c21-ae02-df93598b1ca3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Avail_Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="d7ab95b9-9e80-4ef9-8c92-53387826d3f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[BRANCH ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="30" uuid="be92b3aa-2223-4900-8165-c2fabeda6d91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[BRANCH NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="97780937-f903-4dd5-b835-e324aa9b8a6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CUST ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="200" height="30" uuid="1ab7a71b-2252-419d-8e52-25f63ba51795"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CUST ADDRESS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="500" y="0" width="100" height="30" uuid="3d9a1b9e-365e-4473-af44-eb873e7ca2b8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d542f923-fb40-4bc3-b229-5f216a1e12d6"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Account_Id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="30" uuid="fc2fce2d-e762-4b3b-8f34-37f2ca02a9a5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="684c1d8d-aa5b-4a0d-b7a0-80b108de3b2d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Product_Cd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="100" height="30" uuid="b390bf98-1c08-4795-a6cb-fc3efd8769df">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ead2e84f-3e9c-4c21-ae02-df93598b1ca3"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Avail_Balance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>JavaSE18</groupId>
+  <artifactId>Alumnos</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Aplicacion con Java y Maven</name>
+  <description>Proyecto Ejemplo para trabajar con Java y Maven ademas de JasperReports</description>
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+	<dependency>
+	    <groupId>com.mysql</groupId>
+	    <artifactId>mysql-connector-j</artifactId>
+	    <version>8.0.32</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+	<dependency>
+	    <groupId>net.sf.jasperreports</groupId>
+	    <artifactId>jasperreports</artifactId>
+	    <version>6.20.1</version>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/org.apache.groovy/groovy -->
+	<dependency>
+	    <groupId>org.apache.groovy</groupId>
+	    <artifactId>groovy</artifactId>
+	    <version>4.0.12</version>
+	</dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
